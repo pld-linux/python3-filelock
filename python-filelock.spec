@@ -20,10 +20,16 @@ BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
 BuildRequires:	python-modules >= 1:2.7
 BuildRequires:	python-setuptools
+%if %{with tests}
+BuildRequires:	python-pytest
+%endif
 %endif
 %if %{with python3}
 BuildRequires:	python3-modules >= 1:3.4
 BuildRequires:	python3-setuptools
+%if %{with tests}
+BuildRequires:	python3-pytest
+%endif
 %endif
 Requires:	python-modules >= 1:2.7
 BuildArch:	noarch
@@ -63,7 +69,8 @@ komunikacji międzyprocesowej.
 %py_build
 
 %if %{with tests}
-%{__python} test.py
+PYTHONPATH=$(pwd)/src \
+%{__python} -m pytest tests
 %endif
 %endif
 
@@ -71,7 +78,8 @@ komunikacji międzyprocesowej.
 %py3_build
 
 %if %{with tests}
-%{__python3} test.py
+PYTHONPATH=$(pwd)/src \
+%{__python3} -m pytest tests
 %endif
 %endif
 
