@@ -7,13 +7,13 @@
 Summary:	A platform independent file lock
 Summary(pl.UTF-8):	Niezależne od platformy blokady plikowe
 Name:		python-filelock
-Version:	3.0.12
-Release:	2
+Version:	3.2.1
+Release:	1
 License:	Public Domain
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/filelock/
 Source0:	https://files.pythonhosted.org/packages/source/f/filelock/filelock-%{version}.tar.gz
-# Source0-md5:	c1fe6d9a7433a7ca6ce4f36e273317d1
+# Source0-md5:	92fea9fb4ebf39d746c77ec6c4c87be0
 URL:		https://pypi.org/project/filelock/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
@@ -95,7 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc LICENSE README.md
-%{py_sitescriptdir}/filelock.py[co]
+%{py_sitescriptdir}/filelock
 %{py_sitescriptdir}/filelock-%{version}-py*.egg-info
 %endif
 
@@ -103,7 +103,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -n python3-filelock
 %defattr(644,root,root,755)
 %doc LICENSE README.md
-%{py3_sitescriptdir}/filelock.py
-%{py3_sitescriptdir}/__pycache__/filelock.cpython-*.py[co]
+%{py3_sitescriptdir}/filelock
 %{py3_sitescriptdir}/filelock-%{version}-py*.egg-info
 %endif
