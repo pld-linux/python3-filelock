@@ -16,7 +16,8 @@ Source0:	https://files.pythonhosted.org/packages/source/f/filelock/filelock-%{ve
 # Source0-md5:	cda4ead6a7ee1e6103d27aaf67c8d327
 URL:		https://pypi.org/project/filelock/
 BuildRequires:	python3-modules >= 1:3.7
-BuildRequires:	python3-setuptools
+BuildRequires:	python3-setuptools >= 1:41.0.0
+BuildRequires:	python3-setuptools_scm >= 2
 %if %{with tests}
 BuildRequires:	python3-pytest >= 4
 BuildRequires:	python3-pytest-timeout >= 1.4.2
