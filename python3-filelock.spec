@@ -8,7 +8,7 @@ Summary:	A platform independent file lock
 Summary(pl.UTF-8):	Niezależne od platformy blokady plikowe
 Name:		python3-filelock
 Version:	3.7.1
-Release:	1
+Release:	2
 License:	Public Domain
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/filelock/
