@@ -1,23 +1,23 @@
 # TODO: finish doc
 #
 # Conditional build:
-%bcond_without	tests	# unit tests (250+ processes created, max processes ulimit must allow it)
+%bcond_with	tests	# unit tests (250+ processes created, max processes ulimit must allow it)
 %bcond_with	doc	# Sphinx documentation
 
 Summary:	A platform independent file lock
 Summary(pl.UTF-8):	Niezależne od platformy blokady plikowe
 Name:		python3-filelock
-Version:	3.7.1
-Release:	2
+Version:	3.17.0
+Release:	1
 License:	Public Domain
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/filelock/
 Source0:	https://files.pythonhosted.org/packages/source/f/filelock/filelock-%{version}.tar.gz
-# Source0-md5:	cda4ead6a7ee1e6103d27aaf67c8d327
+# Source0-md5:	32624573c1dcea186f907c78e4fb80a2
 URL:		https://pypi.org/project/filelock/
 BuildRequires:	python3-modules >= 1:3.7
-BuildRequires:	python3-setuptools >= 1:41.0.0
-BuildRequires:	python3-setuptools_scm >= 2
+BuildRequires:	python3-build
+BuildRequires:	python3-installer
 %if %{with tests}
 BuildRequires:	python3-pytest >= 4
 BuildRequires:	python3-pytest-timeout >= 1.4.2
@@ -47,7 +47,7 @@ komunikacji międzyprocesowej.
 %setup -q -n filelock-%{version}
 
 %build
-%py3_build
+%py3_build_pyproject
 
 %if %{with tests}
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
@@ -63,7 +63,7 @@ sphinx-build -b html -d docs/_build/doctree docs docs/_build/html
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%py3_install
+%py3_install_pyproject
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -72,4 +72,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc LICENSE README.md
 %{py3_sitescriptdir}/filelock
-%{py3_sitescriptdir}/filelock-%{version}-py*.egg-info
+%{py3_sitescriptdir}/filelock-%{version}.dist-info
