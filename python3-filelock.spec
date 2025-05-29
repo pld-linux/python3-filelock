@@ -15,21 +15,27 @@ Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/f/filelock/filelock-%{version}.tar.gz
 # Source0-md5:	32624573c1dcea186f907c78e4fb80a2
 URL:		https://pypi.org/project/filelock/
-BuildRequires:	python3-modules >= 1:3.7
 BuildRequires:	python3-build
+BuildRequires:	python3-hatch-vcs >= 0.4
+BuildRequires:	python3-hatchling >= 1.27
 BuildRequires:	python3-installer
+BuildRequires:	python3-modules >= 1:3.9
 %if %{with tests}
-BuildRequires:	python3-pytest >= 4
-BuildRequires:	python3-pytest-timeout >= 1.4.2
+BuildRequires:	python3-pytest >= 8.3.4
+BuildRequires:	python3-pytest-asyncio >= 0.25.2
+BuildRequires:	python3-pytest-cov >= 6
+BuildRequires:	python3-pytest-mock >= 3.14
+BuildRequires:	python3-pytest-timeout >= 2.3.1
+BuildRequires:	python3-virtualenv >= 20.28.1
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with doc}
-BuildRequires:	python3-furo >= 2021.8.17b43
-BuildRequires:	python3-sphinx-autodoc-typehints >= 1.12
-BuildRequires:	sphinx-pdg >= 4.1
+BuildRequires:	python3-furo >= 2024.8.6
+BuildRequires:	python3-sphinx_autodoc_typehints >= 3
+BuildRequires:	sphinx-pdg >= 8.1.3
 %endif
-Requires:	python3-modules >= 1:3.7
+Requires:	python3-modules >= 1:3.9
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
